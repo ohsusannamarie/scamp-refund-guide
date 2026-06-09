@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summer Camp 2026 — Refund Guide</title>
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --ink:        #1a1a1a;
+    --ink-soft:   #555;
+    --bg:         #faf9f6;
+    --surface:    #ffffff;
+    --line:       #dedad2;
+    --green:      #1a6b4a;
+    --green-soft: #e8f3ed;
+    --amber:      #b45309;
+    --amber-soft: #fef3e2;
+    --red:        #991b1b;
+    --red-soft:   #fdf0ef;
+    --purple:     #5b21b6;
+    --purple-soft:#f3f0fb;
+    --blue:       #1d4ed8;
+    --blue-soft:  #eff4ff;
+    --tag-border: 2px solid;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Georgia", "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 11pt;
+    line-height: 1.55;
+    padding: 0;
+  }
+
+  /* ── PAGE SHELL ── */
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 32px 28px 40px;
+    background: var(--surface);
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    min-height: 100vh;
+  }
+
+  /* ── MASTHEAD ── */
+  .masthead {
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+  }
+  .masthead-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .masthead h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .masthead h1 span { color: var(--green); }
+  .masthead-meta {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    text-align: right;
+    line-height: 1.5;
+  }
+  .masthead-sub {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 8px;
+    margin-top: 6px;
+  }
+
+  /* ── SECTION LABELS ── */
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+
+  section { margin-bottom: 20px; }
+
+  /* ── CALLOUT BOXES ── */
+  .box {
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.88rem;
+  }
+  .box-green  { background: var(--green-soft);  border-left: 4px solid var(--green); }
+  .box-amber  { background: var(--amber-soft);  border-left: 4px solid var(--amber); }
+  .box-red    { background: var(--red-soft);    border-left: 4px solid var(--red); }
+  .box-purple { background: var(--purple-soft); border-left: 4px solid var(--purple); }
+  .box-blue   { background: var(--blue-soft);   border-left: 4px solid var(--blue); }
+
+  .box .label {
+    font-weight: 800;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .box-green  .label { color: var(--green); }
+  .box-amber  .label { color: var(--amber); }
+  .box-red    .label { color: var(--red); }
+  .box-purple .label { color: var(--purple); }
+  .box-blue   .label { color: var(--blue); }
+
+  /* ── TWO-COL GRID ── */
+  .col2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* ── METHOD CARDS ── */
+  .method {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 11px 13px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.84rem;
+  }
+  .method .method-head {
+    font-weight: 800;
+    font-size: 0.82rem;
+    margin-bottom: 4px;
+    color: var(--ink);
+  }
+  .method .method-head .tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  .tag-strong { background: var(--green-soft); color: var(--green); }
+  .tag-good   { background: var(--blue-soft);  color: var(--blue); }
+  .tag-ok     { background: var(--amber-soft); color: var(--amber); }
+  .tag-hard   { background: var(--red-soft);   color: var(--red); }
+
+  .method ul { padding-left: 16px; margin-top: 4px; color: var(--ink-soft); }
+  .method ul li { margin-bottom: 2px; }
+
+  /* ── STEP SEQUENCE ── */
+  ol.steps { list-style: none; padding: 0; counter-reset: step; }
+  ol.steps li {
+    counter-increment: step;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.87rem;
+  }
+  ol.steps li::before {
+    content: counter(step);
+    background: var(--green);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.72rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  ol.steps li b { color: var(--ink); }
+  ol.steps li span { color: var(--ink-soft); font-size: 0.82rem; }
+
+  /* ── SCRIPT BLOCK ── */
+  .script {
+    background: var(--amber-soft);
+    border: 1px solid #f0c060;
+    border-left: 4px solid var(--amber);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.87rem;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .script .script-label {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  /* ── ANCHOR PHRASE ── */
+  .anchor {
+    background: var(--purple-soft);
+    border: 1px solid #c4b5fd;
+    border-left: 4px solid var(--purple);
+    border-radius: 6px;
+    padding: 11px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 8px;
+  }
+  .anchor .anchor-label {
+    font-weight: 800;
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--purple);
+    display: block;
+    margin-bottom: 4px;
+    font-style: normal;
+  }
+
+  /* ── CHECKLIST ── */
+  ul.check { list-style: none; padding: 0; }
+  ul.check li {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.86rem;
+    padding: 5px 0 5px 22px;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+  }
+  ul.check li:last-child { border-bottom: none; }
+  ul.check li::before {
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: 0.95rem;
+  }
+  ul.check li small { display: block; color: var(--ink-soft); font-size: 0.78rem; }
+
+  /* ── IMPORTANT FLAG ── */
+  .flag {
+    background: var(--red-soft);
+    border: 1px solid #f5b8b5;
+    border-left: 4px solid var(--red);
+    border-radius: 6px;
+    padding: 11px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.86rem;
+  }
+  .flag .flag-label {
+    font-weight: 800;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--red);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ── DIVIDER ── */
+  hr { border: none; border-top: 1px solid var(--line); margin: 18px 0; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 2px solid var(--ink);
+    padding-top: 10px;
+    margin-top: 22px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* ── PRINT TOOLBAR ── */
+  .toolbar {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    text-align: right;
+    padding: 10px 28px 0;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .toolbar button {
+    font: inherit;
+    font-size: 0.8rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .toolbar button:hover { background: var(--green-soft); border-color: var(--green); }
+
+  /* ── INLINE MONO ── */
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.82em;
+    background: #f0ede6;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  /* ── REAL-WORLD EXAMPLE ── */
+  .example {
+    background: #0f2e1e;
+    color: #e8f3ed;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.86rem;
+    margin-top: 12px;
+  }
+  .example .ex-label {
+    font-size: 0.66rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #6ee7a0;
+    display: block;
+    margin-bottom: 7px;
+  }
+  .example .ex-head {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #ffffff;
+    margin-bottom: 6px;
+  }
+  .example ul { padding-left: 16px; color: #c6e8d6; }
+  .example ul li { margin-bottom: 3px; }
+  .example .ex-result {
+    margin-top: 9px;
+    padding-top: 8px;
+    border-top: 1px solid #2a5c3a;
+    color: #6ee7a0;
+    font-weight: 600;
+    font-size: 0.84rem;
+  }
+
+  /* ── ACTION TIMELINE ── */
+  .timeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  .tl-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 10px 6px 10px;
+  }
+  .tl-item::after {
+    content: "\203A";
+    position: absolute;
+    right: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    z-index: 1;
+  }
+  .tl-item:last-child::after { display: none; }
+  .tl-item.tl-past {
+    background: #f0ede6;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  .tl-item.tl-now {
+    background: var(--green);
+    border: 1px solid var(--green);
+    border-radius: 6px;
+  }
+  .tl-date {
+    font-size: 0.66rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .tl-past .tl-date { color: var(--ink-soft); }
+  .tl-now  .tl-date { color: #a7f3c4; }
+  .tl-desc {
+    font-size: 0.75rem;
+    line-height: 1.3;
+    display: block;
+  }
+  .tl-past .tl-desc { color: var(--ink-soft); }
+  .tl-now  .tl-desc { color: #fff; font-weight: 600; }
+
+  /* ── DISPUTE CATEGORY NOTE ── */
+  .cat-note {
+    background: var(--blue-soft);
+    border: 1px solid #b8d0f5;
+    border-left: 4px solid var(--blue);
+    border-radius: 6px;
+    padding: 11px 14px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+  .cat-note .cat-label {
+    font-weight: 800;
+    font-size: 0.67rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 5px;
+  }
+  .cat-note ul { padding-left: 16px; margin: 6px 0 4px; color: var(--ink); }
+  .cat-note ul li { margin-bottom: 2px; }
+
+  /* ── PRINT ── */
+  /* ── CASE STUDY ── */
+  .case-study {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.86rem;
+  }
+  .case-row {
+    display: flex;
+    gap: 12px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: flex-start;
+  }
+  .case-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .case-key {
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    flex: 0 0 130px;
+    padding-top: 1px;
+  }
+  .case-val { color: var(--ink); flex: 1; }
+  .case-val ul { padding-left: 16px; margin-top: 3px; }
+  .case-val ul li { margin-bottom: 2px; color: var(--ink-soft); }
+
+  @media print {
+    body { background: #fff; font-size: 9.5pt; }
+    .toolbar { display: none; }
+    .page {
+      border: none;
+      padding: 18px 22px 28px;
+      max-width: 100%;
+    }
+    .col2 { grid-template-columns: 1fr 1fr; }
+    section, .box, .method, .flag { break-inside: avoid; }
+    .masthead h1 { font-size: 1.3rem; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  @media (max-width: 520px) {
+    .col2 { grid-template-columns: 1fr; }
+    .masthead-top { flex-direction: column; }
+    .masthead-meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">
+      <h1>Summer Camp 2026<br><span>Refund &amp; Dispute Guide</span></h1>
+      <div class="masthead-meta">
+        Event cancelled: <b>May 8, 2026</b><br>
+        Festival dates: May 21&ndash;24, 2026<br>
+        Originally compiled: June 9, 2026<br>
+        By Susanna Conway<br>
+        <span style="color:var(--green);font-weight:700;">Version 1.4</span><br>
+        <span style="color:var(--ink-soft);font-size:0.68rem;">&#x25cf;&nbsp;Actively maintained</span>
+      </div>
+    </div>
+    <div class="masthead-sub">
+      The festival was cancelled due to financial circumstances involving a third-party service provider. Organizers directed all ticket holders to contact their point of purchase. This guide walks you through your options &mdash; regardless of how or where you paid.
+    </div>
+  </div>
+
+  <!-- OFFICIAL SOURCES -->
+  <div class="box box-blue" style="margin-bottom:20px;">
+    <span class="label">&#x2139; Official sources</span>
+    This guide is based on the official Summer Camp 2026 cancellation announcement and related communications from festival organizers. The following should be considered authoritative sources for cancellation-related information. This guide is intended to help attendees navigate refund and dispute options following the cancellation.
+    <div style="margin-top:9px;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:0.84rem;display:flex;flex-direction:column;gap:4px;">
+      <span><b>Festival website:</b> <a href="https://summercampfestival.com/" style="color:var(--blue);">summercampfestival.com</a></span>
+      <span><b>Official Instagram announcement:</b> <a href="https://www.instagram.com/p/DYGAgc-Ca6J/" style="color:var(--blue);">instagram.com/p/DYGAgc-Ca6J</a></span>
+      <span><b>Official Facebook announcement:</b> <a href="https://www.facebook.com/share/p/1EDmoCbprz/" style="color:var(--blue);">facebook.com/share/p/1EDmoCbprz</a></span>
+      <span style="margin-top:3px;padding-top:6px;border-top:1px solid #b8d0f5;"><b>Guide homepage (latest version):</b> <a href="https://ohsusannamarie.github.io/scamp-refund-guide" style="color:var(--blue);">ohsusannamarie.github.io/scamp-refund-guide</a></span>
+    </div>
+  </div>
+
+  <!-- ACTION TIMELINE -->
+  <section>
+    <h2>Act now &mdash; where we are in the timeline</h2>
+    <div class="timeline">
+      <div class="tl-item tl-past">
+        <span class="tl-date">May 8</span>
+        <span class="tl-desc">Cancellation announced</span>
+      </div>
+      <div class="tl-item tl-past">
+        <span class="tl-date">May 21&ndash;24</span>
+        <span class="tl-desc">Event would have occurred</span>
+      </div>
+      <div class="tl-item tl-now">
+        <span class="tl-date">Today</span>
+        <span class="tl-desc">Save all documentation</span>
+      </div>
+      <div class="tl-item tl-now">
+        <span class="tl-date">Today</span>
+        <span class="tl-desc">Contact point of purchase</span>
+      </div>
+      <div class="tl-item tl-now">
+        <span class="tl-date">Today</span>
+        <span class="tl-desc">File payment dispute</span>
+      </div>
+    </div>
+    <p style="font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:0.78rem;color:var(--ink-soft);margin-top:6px;">
+      Dispute windows vary by payment method. The sooner you act, the more options you have.
+    </p>
+  </section>
+
+  <hr>
+
+  <!-- STEP 1: GATHER YOUR DOCS -->
+  <section>
+    <h2>Step 1 &mdash; Gather your documentation first</h2>
+    <ul class="check">
+      <li>Official cancellation announcement (screenshot the festival&rsquo;s social post or email)</li>
+      <li>Your order confirmation / receipt (email from your ticketing platform)</li>
+      <li>Proof of every payment made &mdash; bank statement, app receipt, or transaction screenshot</li>
+      <li>Any correspondence with the ticketing company or festival organizers</li>
+      <li>Your order number and all transaction IDs / reference numbers</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- STEP 2: CONTACT POINT OF PURCHASE -->
+  <section>
+    <h2>Step 2 &mdash; Contact your point of purchase</h2>
+    <p style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; font-size:0.87rem; color:var(--ink-soft); margin-bottom:10px;">
+      Do this first, in writing, so you have a paper trail. Email is better than a phone call for documentation purposes.
+    </p>
+
+    <div class="col2" style="margin-bottom:10px;">
+      <div class="method">
+        <div class="method-head">Eventim / See Tickets <span class="tag tag-good">Primary for most</span></div>
+        <ul>
+          <li>Email: <code>help@seetickets.us</code></li>
+          <li>Also CC: <code>ticketing@eventim.com</code></li>
+          <li>Subject: <em>Refund Request &mdash; Cancelled Summer Camp 2026 &mdash; Order [#]</em></li>
+          <li>State your order number, total paid, cancellation date, and request a full refund</li>
+          <li>Review target: 30 days per their terms</li>
+        </ul>
+      </div>
+      <div class="method">
+        <div class="method-head">Other platforms</div>
+        <ul>
+          <li><b>Ticketmaster / LiveNation:</b> log in &rarr; My Tickets &rarr; Request Refund</li>
+          <li><b>AXS:</b> axs.com/help or the email on your receipt</li>
+          <li><b>StubHub / resale:</b> open a buyer protection case immediately</li>
+          <li><b>Direct / other:</b> reply to your confirmation email with a written refund request</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box box-amber">
+      <span class="label">&#x26A0; Check for refund deadlines at your point of purchase</span>
+      Ticket policies sometimes include limited refund windows following a cancellation. Review the terms associated with your specific purchase &mdash; refund deadlines may apply. <b>Do not wait</b> to contact your point of purchase and file a payment dispute, as both timelines may be running simultaneously.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- STEP 3: PAYMENT DISPUTE -->
+  <section>
+    <h2>Step 3 &mdash; File a payment dispute (run this in parallel, don&rsquo;t wait)</h2>
+    <p style="font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; font-size:0.87rem; color:var(--ink-soft); margin-bottom:10px;">
+      Filing a dispute is not an adversarial act &mdash; it is exactly what these protections exist for. Run it in parallel with your merchant refund request. You will only keep one refund.
+    </p>
+
+    <div class="box box-green" style="margin-bottom:12px;">
+      <span class="label">&#x2713; Before you call &mdash; have these ready</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px 20px;margin-top:4px;font-size:0.85rem;">
+        <span>&#x2610;&nbsp; Cancellation announcement</span>
+        <span>&#x2610;&nbsp; Payment receipt or statement</span>
+        <span>&#x2610;&nbsp; Order number</span>
+        <span>&#x2610;&nbsp; Merchant correspondence</span>
+        <span>&#x2610;&nbsp; Transaction dates and amounts</span>
+        <span>&#x2610;&nbsp; Refund request documentation</span>
+      </div>
+    </div>
+
+    <div class="col2">
+      <div class="method">
+        <div class="method-head">Credit card <span class="tag tag-strong">Strongest option</span></div>
+        <ul>
+          <li>Call the number on the back of your card</li>
+          <li>Say: <em>&ldquo;I need to dispute a charge &mdash; services not rendered, event was cancelled&rdquo;</em></li>
+          <li>Federal law (FCBA) provides consumers the right to dispute qualifying charges</li>
+          <li>Window: typically 60&ndash;120 days; verify with your card issuer</li>
+          <li>You may receive provisional credit while they investigate</li>
+        </ul>
+      </div>
+      <div class="method">
+        <div class="method-head">Venmo Debit Card (MC) <span class="tag tag-strong">Strong</span></div>
+        <ul>
+          <li>Call <b>(855) 812-4430</b> &mdash; daily 8 AM&ndash;8 PM CT</li>
+          <li>Or: call the number on the back of your Venmo Debit Card</li>
+          <li>Say: <em>&ldquo;Three debit card purchases &mdash; event was cancelled &mdash; services not rendered&rdquo;</em></li>
+          <li>Venmo will file separate disputes per transaction</li>
+          <li>Review target: approximately 10 business days (per Venmo representative)</li>
+          <li>File as soon as possible &mdash; eligibility windows vary by payment type and dispute category</li>
+        </ul>
+      </div>
+      <div class="method">
+        <div class="method-head">PayPal <span class="tag tag-good">Good</span></div>
+        <ul>
+          <li>Open a dispute within 180 days of payment</li>
+          <li>Resolution Center &rarr; Report a Problem &rarr; Item Not Received</li>
+          <li>If unresolved in 20 days, escalate to a Claim</li>
+        </ul>
+      </div>
+      <div class="method">
+        <div class="method-head">Debit card (bank) <span class="tag tag-ok">Possible</span></div>
+        <ul>
+          <li>Call your bank directly</li>
+          <li>Protections vary by bank &mdash; act fast, windows are shorter</li>
+          <li>Bring: cancellation proof, receipt, merchant contact attempt</li>
+        </ul>
+      </div>
+      <div class="method">
+        <div class="method-head">Venmo balance (P2P) <span class="tag tag-hard">Difficult</span></div>
+        <ul>
+          <li>If you paid a friend or P2P (not a merchant), standard Purchase Protection may not apply</li>
+          <li>Try Venmo support &mdash; but outcome is uncertain</li>
+          <li>Contact your bank as a secondary option</li>
+        </ul>
+      </div>
+      <div class="method">
+        <div class="method-head">Cash / check / wire <span class="tag tag-hard">Very difficult</span></div>
+        <ul>
+          <li>No automatic reversal mechanism</li>
+          <li>Merchant refund request is your primary path</li>
+          <li>If merchant is unresponsive: consult your state AG consumer protection office</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- REAL-WORLD EXAMPLE -->
+    <div class="example">
+      <span class="ex-label">&#x2713; Real-world example &mdash; June 9, 2026</span>
+      <div class="ex-head">Venmo Debit Mastercard &mdash; Eventim / See Tickets &mdash; $904.85 total</div>
+      A fellow attendee successfully opened disputes for three Summer Camp transactions by phone on the day this guide was compiled. The representative accepted the dispute after the following facts were stated:
+      <ul>
+        <li>Event was officially cancelled on May 8, 2026</li>
+        <li>Services were never provided</li>
+        <li>No refund had been received</li>
+        <li>Merchant had already been contacted in writing</li>
+        <li>Supporting documentation was available</li>
+      </ul>
+      <div style="margin-top:9px;padding-top:8px;border-top:1px solid #2a5c3a;color:#c6e8d6;font-size:0.83rem;">
+        Venmo opened three separate dispute cases:
+        <span style="display:inline-block;margin-left:8px;color:#fff;">$455.00 &nbsp;&middot;&nbsp; $369.90 &nbsp;&middot;&nbsp; $79.95</span>
+        <br>Total disputed: <strong style="color:#fff;">$904.85</strong>
+      </div>
+      <div class="ex-result">&#x2713;&nbsp; All three cases were immediately marked Under Review. Case numbers issued on the spot.</div>
+    </div>
+
+    <!-- DISPUTE CATEGORY NOTE -->
+    <div class="cat-note">
+      <span class="cat-label">&#x2139; About dispute categories &mdash; focus on facts, not labels</span>
+      Some payment providers may categorize a cancelled-event dispute differently than the language you use. In the real-world example above, Venmo filed the disputes under <b>&ldquo;Item Not Received&rdquo;</b> even though the issue was described as services not rendered. That&rsquo;s fine &mdash; what matters is that the facts are on the record. Focus on stating:
+      <ul>
+        <li>Event was cancelled</li>
+        <li>Service was never provided</li>
+        <li>No refund has been received</li>
+      </ul>
+      The representative will choose the category that fits their system. Don&rsquo;t get hung up on the label.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- WHAT TO SAY -->
+  <section>
+    <h2>What to say when you call</h2>
+    <div class="script">
+      <span class="script-label">Opening script</span>
+      &ldquo;I need to dispute [one / multiple] purchase[s] made with my [card type]. The purchases were for Summer Camp Music Festival 2026 through [your ticketing platform]. The event was officially cancelled on May 8, 2026. The services were never provided and I have not received a refund. I&rsquo;ve already contacted the merchant in writing. I&rsquo;d like to file a dispute for services not rendered.&rdquo;
+    </div>
+    <div class="anchor">
+      <span class="anchor-label">Anchor phrase &mdash; return to this if the conversation drifts</span>
+      &ldquo;The event was cancelled and the services were never provided.&rdquo;
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- DISPUTE WINDOW FLAG -->
+  <section>
+    <h2>Critical &mdash; if they say you&rsquo;re outside the dispute window</h2>
+    <div class="flag">
+      <span class="flag-label">&#x26A0; Push back before accepting any denial</span>
+      Ask immediately: <b>&ldquo;For a cancelled event where services were never provided, is the window measured from the purchase date, the cancellation date (May 8), or the date the service was supposed to be provided (May 21)?&rdquo;</b>
+      <br><br>
+      For &ldquo;services not rendered&rdquo; disputes involving a cancelled event, how the dispute window is measured can vary by institution &mdash; some may count from the purchase date, others from the cancellation date, others from the date the service was supposed to occur. <b>Ask the representative directly</b> how their institution calculates the window for a cancelled event before accepting any denial. Get their answer on the record.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- BEFORE YOU HANG UP -->
+  <section>
+    <h2>Before you hang up &mdash; confirm these</h2>
+    <div class="col2">
+      <ul class="check">
+        <li>Case or reference number for each transaction</li>
+        <li>Expected timeline for resolution</li>
+        <li>Whether a provisional credit applies during review</li>
+      </ul>
+      <ul class="check">
+        <li>What documentation they need from you</li>
+        <li>Written confirmation sent to your email</li>
+        <li>Agent name and date/time of your call</li>
+      </ul>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- IF BOTH STALL -->
+  <section>
+    <h2>If both the merchant and your bank stall or deny</h2>
+    <ol class="steps">
+      <li><b>Escalate within your bank.</b> <span>Ask to speak with a disputes specialist. Reference &ldquo;Regulation E&rdquo; for debit cards or &ldquo;FCBA&rdquo; for credit cards &mdash; those are federal consumer protection frameworks.</span></li>
+      <li><b>File with the CFPB.</b> <span>The Consumer Financial Protection Bureau (cfpb.gov) accepts complaints about payment disputes. A CFPB complaint may prompt faster attention from financial institutions.</span></li>
+      <li><b>Contact your state Attorney General.</b> <span>State AG consumer protection offices handle event cancellation complaints. Find yours at naag.org.</span></li>
+      <li><b>Small claims court.</b> <span>For amounts like $900, small claims is viable in most states &mdash; no attorney needed. File against the ticketing company in their home state or yours.</span></li>
+    </ol>
+  </section>
+
+  <hr>
+
+  <!-- WHY SOME ATTENDEES ARE FILING NOW -->
+  <section>
+    <h2>Why some attendees are filing disputes now</h2>
+    <div class="box box-blue">
+      <span class="label">&#x2139; A balanced note on timing</span>
+      Many festival cancellations eventually result in refunds &mdash; and that may still happen here. However, banks, card issuers, and payment processors have their own dispute filing deadlines, which continue running regardless of where the merchant refund process stands.
+      <br><br>
+      If no refund has been received and no clear timeline has been provided, some attendees may choose to pursue both paths simultaneously:
+      <ol style="padding-left:18px;margin:8px 0 6px;">
+        <li style="margin-bottom:4px;">Continue seeking a refund from the point of purchase.</li>
+        <li>Open a dispute to preserve their rights before applicable deadlines expire.</li>
+      </ol>
+      Filing a dispute does not imply the festival or ticketing company acted fraudulently. It is a precautionary step to keep options open while awaiting refund information.
+      <br><br>
+      <strong>Important:</strong> If a merchant refund is ultimately received, attendees should not retain both the merchant refund and a dispute credit for the same purchase.
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- WHAT HAPPENED IN MY CASE -->
+  <section>
+    <h2>What happened in my case</h2>
+    <p style="font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:0.85rem;color:var(--ink-soft);margin-bottom:10px;">
+      A real example from one attendee, shared to help others understand what the process looked like end to end.
+    </p>
+    <div class="case-study">
+      <div class="case-row">
+        <span class="case-key">Payment method</span>
+        <span class="case-val">Venmo Debit Mastercard issued by The Bancorp Bank</span>
+      </div>
+      <div class="case-row">
+        <span class="case-key">Ticket platform</span>
+        <span class="case-val">Eventim / See Tickets</span>
+      </div>
+      <div class="case-row">
+        <span class="case-key">Timeline</span>
+        <span class="case-val">
+          <ul>
+            <li>Event cancelled May 8, 2026 &mdash; organizers cited third-party financial failure</li>
+            <li>Refund request sent to Eventim / See Tickets on June 9, 2026</li>
+            <li>Dispute filed with Venmo the same day &mdash; (855) 812-4430</li>
+          </ul>
+        </span>
+      </div>
+      <div class="case-row">
+        <span class="case-key">What I stated</span>
+        <span class="case-val">
+          <ul>
+            <li>Event was officially cancelled</li>
+            <li>Services were never provided</li>
+            <li>No refund had been received</li>
+            <li>Merchant had already been contacted in writing</li>
+            <li>Supporting documentation was available</li>
+          </ul>
+        </span>
+      </div>
+      <div class="case-row">
+        <span class="case-key">Outcome</span>
+        <span class="case-val">Three separate disputes opened &mdash; $455.00, $369.90, $79.95 ($904.85 total). All cases immediately marked Under Review.</span>
+      </div>
+      <div class="case-row">
+        <span class="case-key">Current status</span>
+        <span class="case-val" style="color:var(--amber);">As of June 9, 2026, all three disputes remain under review. Awaiting document submission request and follow-up from the Venmo disputes team. Final outcome not yet known.</span>
+      </div>
+      <div class="case-row">
+        <span class="case-key">Lessons learned</span>
+        <span class="case-val">
+          <ul>
+            <li>Have documentation ready before calling &mdash; the call goes faster</li>
+            <li>Stay focused on facts: cancelled, never provided, no refund</li>
+            <li>Get a case number for every individual transaction</li>
+            <li>Submit evidence promptly when the disputes agent follows up</li>
+            <li>Contact the merchant in writing first &mdash; it strengthens the dispute</li>
+          </ul>
+        </span>
+      </div>
+    </div>
+    <p style="font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;font-size:0.78rem;color:var(--ink-soft);margin-top:9px;font-style:italic;">
+      This guide will be updated as new information becomes available, including dispute outcomes, refund updates, Eventim / See Tickets communications, and other developments related to the Summer Camp 2026 cancellation.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>Summer Camp 2026 Refund Guide &mdash; v1.4 &mdash; June 9, 2026 &mdash; Compiled and maintained by Susanna Conway</span>
+    <span>Not legal or financial advice &mdash; share freely with other affected fans</span>
+    <span style="width:100%;margin-top:4px;font-size:0.68rem;color:#b0a898;">Latest version: <a href="https://ohsusannamarie.github.io/scamp-refund-guide" style="color:#b0a898;text-decoration:underline;">ohsusannamarie.github.io/scamp-refund-guide</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
